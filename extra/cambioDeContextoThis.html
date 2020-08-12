@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio de contexto this</title>
+</head>
+
+<body>
+    <script>
+        var erik = {
+            nombre: "Erik",
+            apelido: "Antillanca",
+
+        }
+
+        // Error ya que this en este caso es window 
+        function saludar(saludo = 'Hola') {
+            console.log(`${saludo}, mi nombre es ${this.nombre}`);
+        }
+
+        // con esta nueva función el objeto Erik queda atado a saludar  
+        const saludarAErik = saludar.bind(erik);
+
+        saludar();
+        saludarAErik();
+
+        // De esta forma por ejemplo es posible atar el objeto a la función 
+        // sin crear una nueva función y mostrarlo luego de 1 segundo  
+        setTimeout(saludar.bind(erik), 1000);
+
+        // Para pasar parametros a través de bind  
+        // El primer parametro es el contexto (this) y los demás son los parametros de la función 
+        setTimeout(saludar.bind(erik, 'Buenos días'), 1000);
+
+        console.log("bind, call y apply");
+        // Bind cambia el contexto pero no ejecuta la función 
+        saludar.bind(erik, 'Buenas tardes');
+        // call si la llama 
+        saludar.call(erik, 'Buenas tardes desde call');
+        // y apply tambien pero los parametros son pasados en un array 
+        saludar.apply(erik, ['Buenas tardes desde apply']);
+    </script>
+</body>
+
+</html>

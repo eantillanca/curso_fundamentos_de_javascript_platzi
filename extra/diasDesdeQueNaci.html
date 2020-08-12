@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dias desde que naci</title>
+</head>
+
+<body>
+
+    <script>
+        const diasEntreFechas = (fecha1, fecha2) => {
+            const unDia = 1000 * 60 * 60 * 24;
+            const diferencia = Math.abs(fecha1 - fecha2);
+            return Math.floor(diferencia / unDia);
+        }
+
+        const hoy = new Date();
+        const nacimiento = new Date(1995, 3, 1) // meses desde 0
+        const diasDesdeNacimiento = diasEntreFechas(hoy, nacimiento);
+        console.log(
+            `Han pasado ${diasDesdeNacimiento} días desde que nací hace ${(diasDesdeNacimiento/365).toFixed(0)} años`
+            );
+    </script>
+
+</body>
+
+</html>

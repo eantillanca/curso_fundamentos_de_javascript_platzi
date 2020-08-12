@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructuras de datos inmutables</title>
+</head>
+
+<body>
+    <script>
+        const erik = {
+            nombre: "Erik",
+            apelido: "Antillanca",
+            edad: 25
+        }
+
+        const cumpleanios = persona => persona.edad++
+
+        const cumpleaniosInmutable = persona => ({
+            ...persona,
+            edad: persona.edad + 1
+        })
+
+
+        // modifica el objeto original
+        console.log("antes:");
+        console.log(erik);
+
+        cumpleanios(erik);
+        console.log("despues:");
+        console.log(erik);
+
+
+        // retorna un nuevo objeto y el objeto original no se modifica
+        console.log("antes:");
+        console.log(erik);
+
+        const erik2 = cumpleaniosInmutable(erik);
+        console.log("despues:");
+        console.log(erik);
+        console.log(erik2);
+    </script>
+</body>
+
+</html>

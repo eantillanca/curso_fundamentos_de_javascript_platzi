@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Closure</title>
+	</head>
+	<body>
+		<script>
+			function crearSaludo(finDeFrase) {
+				return function (nombre) {
+					console.log(`Hola ${nombre} ${finDeFrase}`);
+				};
+			}
+
+			const saludoArgentino = crearSaludo("che");
+			const saludoPeruano = crearSaludo("pe");
+			const saludoMexicano = crearSaludo("guey");
+
+			saludoArgentino("Erik");
+			saludoPeruano("Erik");
+			saludoMexicano("Erik");
+		</script>
+	</body>
+</html>
